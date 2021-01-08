@@ -3,7 +3,7 @@
 		class="moving-object"
 		:style="objectStyle"
 	>
-		TEST 0
+		{{ num }}
 	</div>
 </template>
 
@@ -24,6 +24,9 @@ export default {
 				}
 			}
 		},
+		num: {
+			type: Number
+		}
 	},
 
 	computed: {
