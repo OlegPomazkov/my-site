@@ -24,7 +24,7 @@
 const HOME_NAV_CONFIG = [
 	{
 		label: 'РЕЗЮМЕ',
-		page: 'ResumeFormal'
+		page: 'About'
 	},
 	{
 		label: 'рЕзЮмЕ',
