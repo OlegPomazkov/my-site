@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="home-footer">
     Fancy footer here
   </div>
 </template>
@@ -10,4 +10,5 @@ export default {
 </script>
 
 <style lang="scss">
+
 </style>

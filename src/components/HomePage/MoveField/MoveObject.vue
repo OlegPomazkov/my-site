@@ -3,7 +3,7 @@
 		class="moving-object"
 		:style="objectStyle"
 	>
-		{{ num }}
+
 	</div>
 </template>
 

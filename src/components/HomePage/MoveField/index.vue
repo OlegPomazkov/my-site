@@ -3,6 +3,10 @@
 		ref="field"
 		class="move-field"
 	>
+		<div class="move-field__title">
+			JUST MY PERSONELL SITE
+		</div>
+
 		<move-object
 			v-for="(obj, k) in objParams"
 			:obj-props="obj"
@@ -40,10 +44,10 @@ const NULL_OBJECT = {
 	direction: 'right'	
 }
 const INIT_PARAMS = {
-	numOfObj: 40,
-	objStep: 0.7,
-	width: 60,
-	height: 60,
+	numOfObj: 8,
+	objStep: 1.5,
+	width: 1,
+	height: 1,
 }
 
 export default {
@@ -61,23 +65,21 @@ export default {
 		return {
 			objStep: INIT_PARAMS.objStep,
 			objParams: arr,
-		}
-	},
-
-	computed: {
-		fieldSize() {
-			return {
-				w: this.$refs.field? this.$refs.field.offsetWidth: 200,
-				h: this.$refs.field? this.$refs.field.offsetHeight: 200,
+			fieldSize: {
+				w: 0,
+				h: 0
 			}
 		}
 	},
+
 	mounted() {
 		let dir = 4
 
+		window.addEventListener('resize', this.setFieldSize)
+		this.setFieldSize() 
 		this.objParams.forEach((obj, k) => { 
-			obj.w = INIT_PARAMS.width,
-			obj.h = INIT_PARAMS.height,
+			obj.w = this.fieldSize.w / 4.2,
+			obj.h = this.fieldSize.h / 4.2,
 			obj.color = PALETTE[Math.floor(Math.random() * PALETTE.length)],
 			obj.direction = DIRECTIONS[dir%4]
 			dir += 1
@@ -104,7 +106,17 @@ export default {
 		this.calculateStep()
 	},
 
+	beforeDestroy() {
+		window.removeEventListener('resize', this.setFieldSize)
+	},
+
 	methods: {
+		setFieldSize() {
+			this.fieldSize = {
+				w: this.$refs.field.offsetWidth,
+				h: this.$refs.field.offsetHeight,
+			}
+		},
 		calculateStep() {
 			this.objParams.forEach( (obj, k) => {
 				let newPos
@@ -152,7 +164,7 @@ export default {
 						break
 				}
 			})
-			setTimeout( this.calculateStep, 1000/60)
+			setTimeout( this.calculateStep, 50/3)
 		},
 		isCollision(num, newPos) {
 			let cond = false
@@ -238,8 +250,8 @@ export default {
 			Vue.set(this.objParams, num, {
 				top: newTop,
 				left: newLeft,
-				w: INIT_PARAMS.width,
-				h: INIT_PARAMS.height,
+				w: this.fieldSize.w / 4.2,
+				h: this.fieldSize.h / 4.2,
 				color: PALETTE[Math.floor(Math.random() * PALETTE.length)],
 				direction: this.objParams[num].direction				
 			})
@@ -275,6 +287,16 @@ export default {
 		box-sizing: border-box;
 		width: 100%;
 		height: 100%;
+		display: flex;
+		justify-content: center;
+		align-items: center;
 		overflow: hidden;
+	}
+	.move-field__title {
+		font-size: 3rem;
+		font-weight: bolder;
+		color: grey;
+		opacity: 0.7;
+		z-index: 100;
 	}
 </style>
