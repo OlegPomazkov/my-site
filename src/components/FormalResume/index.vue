@@ -1,16 +1,21 @@
 <template>
-  <div class="resume-formal">
-    FORMAL RESUME
-  </div>
+	<div class="resume-formal">
+		<resume-formal-nav />
+		<resume-formal-content />
+	</div>
 </template>
 
 <script>
+import ResumeFormalNav from './ResumeFormalNav'
+import ResumeFormalContent from './ResumeFormalContent'
+
 export default {
+	components: {
+		ResumeFormalNav,
+		ResumeFormalContent,
+	}
 }
 </script>
 
 <style lang="scss">
-.resume-formal {
-  color: green;
-}
 </style>

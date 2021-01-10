@@ -1,3 +1,6 @@
+import './assets/styles/index.css';
+import './assets/svg-sprite/__index';
+
 import Vue from 'vue'
 import App from './App.vue'
 import router from './router'

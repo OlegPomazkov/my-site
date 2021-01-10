@@ -1,0 +1,182 @@
+/* raw wars */
+$colorHS_gray: 0, 0%;
+$colorHS_blue: 197.2, 100%;
+$colorHS_green: 93.8, 50.4%;
+$colorHS_red: 17.1, 87.6%;
+
+:root{
+  /* raw colors */
+  --c-hs-gray: $colorHS_gray;
+  --c-hs-blue: $colorHS_blue;
+  --c-hs-green: $colorHS_green;
+  --c-hs-red: $colorHS_red;
+
+  --c-hsl-gray-darkest-1: $colorHS_gray, 14.5%;
+  --c-hsl-gray-darkest-2: $colorHS_gray, 22%;
+  --c-hsl-gray-dark-1: $colorHS_gray, 30%;
+  --c-hsl-gray-dark-2: $colorHS_gray, 37%;
+  --c-hsl-gray-dark-3: $colorHS_gray, 45%;
+  --c-hsl-gray: $colorHS_gray, 68.2%;
+  --c-hsl-gray-light-1: $colorHS_gray, 75.5%;
+  --c-hsl-gray-light-2: $colorHS_gray, 83.5%;
+  --c-hsl-gray-light-3: $colorHS_gray, 91.4%;
+  --c-hsl-gray-lightest-2: $colorHS_gray, 95.3%;
+  --c-hsl-gray-lightest-1: $colorHS_gray, 98.8%;
+
+  --c-hsl-blue-dark: $colorHS_blue, 23.9%;
+  --c-hsl-blue: $colorHS_blue, 43.1%;
+  --c-hsl-blue-light: $colorHS_blue, 62.4%;
+  --c-hsl-blue-lightest: $colorHS_blue, 81.6%;
+
+  --c-hsl-green: $colorHS_green, 51%;
+  --c-hsl-green-light: $colorHS_green, 70.2%;
+
+  --c-hsl-red: $colorHS_red, 47.3%;
+  --c-hsl-red-light: $colorHS_red, 66.5%;
+  --c-hsl-red-lightest: $colorHS_red, 86%;
+
+  /* colors */
+  --c-white: hsl(0, 0%, 100%);
+  --c-black: hsl(0, 0%, 2.7%);
+
+  --c-bg-white: var(--c-white);
+  --c-bg-main: hsl(var(--c-hsl-gray-lightest-1)); /* #FCFCFC */
+  --c-bg-lightest: hsl(var(--c-hsl-gray-lightest-2));
+  --c-bg-light: hsl(var(--c-hsl-gray-light-3));
+  --c-bg-gray: hsl(var(--c-hsl-gray));
+  --c-bg-dark: hsl(var(--c-hsl-gray-dark-1));
+  --c-bg-darkest: hsl(var(--c-hsl-gray-darkest-1));
+  
+  --c-bg-success: hsl(var(--c-hsl-green-light));
+  --c-bg-warning: hsl(var(--c-hsl-red-light));
+  --c-bg-attention: hsl(var(--c-hsl-blue-light));
+  --c-bg-designation: hsla(var(--c-hsl-blue-light), .25);
+
+  --c-text-primary: hsl(var(--c-hsl-gray-darkest-2));
+  --c-text-secondary: hsl(var(--c-hsl-gray-dark-2));
+  --c-text-tertiary: hsl(var(--c-hsl-gray-dark-3));
+  --c-text-tetral: hsl(var(--c-hsl-gray));
+  --c-text-content: hsl(var(--c-hsl-gray-dark-1));
+  --c-text-white: var(--c-white);
+
+  --c-link: hsl(var(--c-hsl-blue));
+  --c-link-hover: hsl(var(--c-hsl-blue-light));
+
+  --c-border-white: var(--c-white);
+  --c-border-lightest: hsl(var(--c-hsl-gray-lightest-2));
+  --c-border-light: hsl(var(--c-hsl-gray-light-3));
+  --c-border: hsl(var(--c-hsl-gray-light-1));
+  --c-border-dark: hsl(var(--c-hsl-gray-dark-1));
+
+  --c-success: hsl(var(--c-hsl-green));
+  --c-attention: hsl(var(--c-hsl-blue));
+  --c-warning: hsl(var(--c-hsl-red));
+  --c-error: hsl(var(--c-hsl-red));
+  --c-accent: gray;
+
+  --c-brand-blue: hsla(var(--c-hsl-blue), var(--c-transparent, 1)); /* #009DDC */
+  --c-brand-green: hsla(var(--c-hsl-green), var(--c-transparent, 1)); /* #7AC143 */
+
+  --shadow-light: -1px 2px 4px var(--c-bg-light), 1px 2px 4px var(--c-bg-light);
+  --shadow-gray: -1px 2px 4px hsla(var(--c-hsl-gray), .8);
+  --shadow-dark: -1px 1px 3px hsla(var(--c-hsl-gray-dark-2), .7);
+
+  /* fonts */
+  --rem: 16px;
+  --font-sans: 'Source Sans Pro', sans-serif;
+  --font-sans-itlalic: 'Open Sans', sans-serif;
+  --font-serif: 'Noto Serif', serif;
+
+  --fs-scale-ratio-down: 1.09;
+  --fs-scale-ratio-up: 1.18;
+  --fs-xxxs: calc(var(--fs-xxs) / var(--fs-scale-ratio-down));
+  --fs-xxs: calc(var(--fs-xs) / var(--fs-scale-ratio-down));
+  --fs-xs: calc(var(--fs-s) / var(--fs-scale-ratio-down));
+  --fs-s: calc(var(--fs-sm) / var(--fs-scale-ratio-down));
+  --fs-sm: calc(var(--fs-m) / var(--fs-scale-ratio-down));
+  --fs-m: var(--rem);
+  --fs-md: calc(var(--fs-m) * var(--fs-scale-ratio-up));
+  --fs-l: calc(var(--fs-md) * var(--fs-scale-ratio-up));
+  --fs-xl: calc(var(--fs-l) * var(--fs-scale-ratio-up));
+  --fs-xxl: calc(var(--fs-xl) * var(--fs-scale-ratio-up));
+  --fs-xxxl: calc(var(--fs-xxl) * var(--fs-scale-ratio-up));
+  --fs-xxxxl: calc(var(--fs-xxxl) * var(--fs-scale-ratio-up));
+  --fs-huge: calc(var(--fs-xxxxl) * var(--fs-scale-ratio-up));
+  
+
+  --lh-scale: 1.072;
+  --lh-one: 1;
+  --lh-xxxs: calc(var(--lh-one) * var(--lh-scale));
+  --lh-xxs: calc(var(--lh-xxxs) * var(--lh-scale));
+  --lh-xs: calc(var(--lh-xxs) * var(--lh-scale));
+  --lh-s: calc(var(--lh-xs) * var(--lh-scale));
+  --lh-m: calc(var(--lh-s) * var(--lh-scale));
+  --lh-l: calc(var(--lh-m) * var(--lh-scale));
+  --lh-xl: calc(var(--lh-l) * var(--lh-scale));
+  --lh-xxl: calc(var(--lh-xl) * var(--lh-scale));
+  --lh-xxxl: calc(var(--lh-xxl) * var(--lh-scale));
+  --lh-xxxxl: calc(var(--lh-xxxl) * var(--lh-scale));
+
+
+  /* letter spacing */
+  --ls-kerning-l: -.028em;
+  --ls-kerning-m: -.02em;
+  --ls-tracking-m: .02em;
+  --ls-tracking-l: .028em;
+  --ls-tracking-xl: .033em;
+
+  
+  /* sizes */
+  --height-header: 3.5rem;
+  --height-footer: 1.5rem;
+  --height-toolbar: 2.5rem;
+  --height-page: calc(100vh - calc(var(--height-header) + var(--height-footer)));
+  --height-page_m: calc(var(--height-page) - 2.5rem);
+  --height-document-viewer: calc(var(--height-page) - var(--height-toolbar));
+
+  --w-xxxs:  20rem; /* 320 px */
+  --w-xxs:   30rem;
+  --w-xs-s:  35rem;
+  --w-xs-m:  40rem;
+  --w-xs:    45rem;
+  --w-s:     50rem;
+  --w-m:     55rem;
+  --w-l:     60rem;
+  --w-xl:    65rem;
+  --w-xxl:   70rem;
+  --w-xxxl:  75rem; 
+  --w-xxxxl: 80rem; 
+  --w-max:   100rem; /* it's site max width */
+
+  /* space */
+  --space-unit: 1rem;
+  --space-xxs: calc(0.25 * var(--space-unit));
+  --space-xs: calc(0.5 * var(--space-unit));
+  --space-s: calc(0.75 * var(--space-unit));
+  --space-m: var(--space-unit);
+  --space-l: calc(1.25 * var(--space-unit));
+  --space-xl: calc(1.5 * var(--space-unit));
+  --space-xxl: calc(2 * var(--space-unit));
+  --space-xxxl: calc(3 * var(--space-unit));
+
+  /* z-index */
+  --z-1: 10;
+  --z-2: 20;
+  --z-3: 30;
+  --z-4: 40;
+  --z-5: 50;
+  --z-header: 90;
+  --z-loader: 95;
+  --z-max: 100;
+  --z-modal: 200;
+
+  /* time */
+  --t-fast: .2s;
+  --t-medium: .4s;
+  --t-slow: .6s;
+  --t-very-slow: 1.4s;
+
+  /* typical hover timing */
+  --hover-in: var(--t-fast) ease-in;
+  --hover-out: var(--t-fast) ease-out;
+}
