@@ -1,3 +1,7 @@
 {
-  "message": "привет i18n !!"
+  "message": "привет i18n !!", 
+  "resume": "РЕЗЮМЕ",
+  "freestyle": "FREESTYLE",
+  "art": "ART",
+  "games": "ИГРЫ"
 }

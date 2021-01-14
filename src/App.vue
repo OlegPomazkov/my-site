@@ -13,6 +13,8 @@ html, body, #app {
 	padding: 0;
 
 	font-family: Geneva, Arial, Helvetica, sans-serif;
-	font-size: 14px; 
+	font-size: 14px;
+
+	background-color: #f0f0f0;
 }
 </style>

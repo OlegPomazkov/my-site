@@ -1,3 +1,7 @@
 {
-  "message": "hello i18n !!"
+  "message": "Hy i18n !!", 
+  "resume": "RESUME",
+  "freestyle": "FREESTYLE",
+  "art": "ART",
+  "games": "GAMES"
 }

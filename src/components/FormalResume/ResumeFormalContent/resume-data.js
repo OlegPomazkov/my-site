@@ -25,6 +25,69 @@ const RESUME_DATA = {
 					position: 'Фронтенд разработчик',
 					details: 'Some additional information here ...'
 				},
+				{
+					name: 'СиСофт',
+					dates: {
+						start: '11/2019',
+						stop: 'по настоящее время'
+					},
+					position: 'Фронтенд разработчик',
+					details: 'Some additional information here ...'
+				},
+				{
+					name: 'СиСофт',
+					dates: {
+						start: '11/2019',
+						stop: 'по настоящее время'
+					},
+					position: 'Фронтенд разработчик',
+					details: 'Some additional information here ...'
+				},
+				{
+					name: 'СиСофт',
+					dates: {
+						start: '11/2019',
+						stop: 'по настоящее время'
+					},
+					position: 'Фронтенд разработчик',
+					details: 'Some additional information here ...'
+				},
+				{
+					name: 'СиСофт',
+					dates: {
+						start: '11/2019',
+						stop: 'по настоящее время'
+					},
+					position: 'Фронтенд разработчик',
+					details: 'Some additional information here ...'
+				},
+				{
+					name: 'СиСофт',
+					dates: {
+						start: '11/2019',
+						stop: 'по настоящее время'
+					},
+					position: 'Фронтенд разработчик',
+					details: 'Some additional information here ...'
+				},
+				{
+					name: 'СиСофт',
+					dates: {
+						start: '11/2019',
+						stop: 'по настоящее время'
+					},
+					position: 'Фронтенд разработчик',
+					details: 'Some additional information here ...'
+				},
+				{
+					name: 'СиСофт',
+					dates: {
+						start: '11/2019',
+						stop: 'по настоящее время'
+					},
+					position: 'Фронтенд разработчик',
+					details: 'Some additional information here ...'
+				},
 
 			]
 		},

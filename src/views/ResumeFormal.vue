@@ -1,5 +1,5 @@
 <template>
-  <formal-resume />
+  <formal-resume class="formal-resume" />
 </template>
 
 <script>
@@ -13,3 +13,12 @@ export default {
 	}
 }
 </script>
+
+<style lang="scss">
+.formal-resume {
+	box-sizing: border-box;
+	width: 100%;
+	height: 100%;
+	overflow: auto;
+}
+</style>

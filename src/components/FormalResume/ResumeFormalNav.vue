@@ -1,18 +1,41 @@
 <template>
 	<div class="resume-formal-nav">
-		<svg width="26" height="26">
-			<use xlink:href="#settings" />
-		</svg>
+		<div  class="resume-formal-nav__control">
+			<custom-button 
+				:icon="'settings'" 
+				@clicked="handleSettingsClicked"
+			/>
+		</div>
 	</div>
 </template>
 
 <script>
+import CustomButton from '@/components/Commons/CustomButton'
+
 export default {
+	components: {
+		CustomButton
+	},
+
+	methods: {
+		handleSettingsClicked() {
+			console.log('Settings clicked!')
+		}
+	}
 }
 </script>
 
 <style lang="scss">
 .resume-formal-nav {
-	color: red;
+	box-sizing: border-box;
+	width: 100%;
+	max-width: 60rem;
+	margin-left: auto;
+	margin-right: auto;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
 }
+
 </style>

@@ -35,6 +35,8 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
+
 import DetailsSection from './DetailsSection'
 
 import RESUME_DATA from './resume-data'
@@ -47,8 +49,13 @@ export default {
 	data() {
 		return {
 			resumeData: RESUME_DATA,
-			locale: 'ru'
 		}
+	},
+
+	computed: {
+		...mapGetters({
+			locale: 'currLocale'
+		})
 	},
 }
 </script>
@@ -62,6 +69,7 @@ export default {
 	flex-direction: column;
 	justify-content: flex-start;
 	align-items: center;
+	overflow: auto;
 }
 .resume-formal-content__header {
 	box-sizing: border-box;
@@ -74,18 +82,18 @@ export default {
 
 	&__name {
 		margin-bottom: 0.1rem;
-		font-size: 2.5rem;
+		font-size: 1.5rem;
 		font-weigth: bolder;
 		color: grey;
 	}
 	&__position {
 		margin-bottom: 0.25rem;
-		font-size: 1.5rem;
+		font-size: 1.2rem;
 		font-weigth: bold;
 		color: grey;
 	}
 	&__comment {
-		font-size: 1rem;
+		font-size: 0.9rem;
 		font-weigth: regular;
 		color: grey;
 	}
@@ -102,10 +110,17 @@ export default {
 	overflow: auto;
 
 	&__common {
-
+		box-sizing: border-box;
+		width: 25%;
+		height: 100%;
+		padding: 0.5rem;
+		border-right: 1px solid grey;
 	}
 	&__details {
-		
+		box-sizing: border-box;
+		height: 100%;
+		padding: 0.5rem;
+		flex: 1;
 	}
 }
 </style>
