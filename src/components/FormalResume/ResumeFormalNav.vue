@@ -5,16 +5,26 @@
 				:icon="'settings'" 
 				@clicked="handleSettingsClicked"
 			/>
+			<custom-dropdown
+				:button-options="{text: 'TesT'}"
+			>
+				<template v-slot:content>
+					Custom content
+				</template>
+			</custom-dropdown>
 		</div>
 	</div>
 </template>
 
 <script>
 import CustomButton from '@/components/Commons/CustomButton'
+import CustomDropdown from '@/components/Commons/CustomDropdown'
+
 
 export default {
 	components: {
-		CustomButton
+		CustomButton,
+		CustomDropdown
 	},
 
 	methods: {

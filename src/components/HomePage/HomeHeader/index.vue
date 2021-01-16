@@ -12,16 +12,22 @@
 				/>
 			</div>
 
-			<custom-button 
-				:icon="'settings'"
-				@clicked="handleSettingsClicked"
-			/>
+			<custom-dropdown
+				class="home-header__wrapper__control"
+				:button-options="{'icon': 'settings'}"
+			>
+				<template v-slot:content>
+					<settings-dialog />
+				</template>
+			</custom-dropdown>
 		</div>
 	</div>
 </template>
 
 <script>
 import CustomButton from '@/components/Commons/CustomButton'
+import CustomDropdown from '@/components/Commons/CustomDropdown'
+import SettingsDialog from './SettingsDialog'
 
 const HOME_NAV_CONFIG = [
 	{
@@ -44,7 +50,9 @@ const HOME_NAV_CONFIG = [
 
 export default {
 	components: {
-		CustomButton
+		CustomButton,
+		CustomDropdown,
+		SettingsDialog,
 	},
 
 	data() {
@@ -94,5 +102,11 @@ export default {
 	flex-direction: row;
 	justify-content: space-between;
 	align-items: center;	
+}
+.home-header__wrapper__control {	
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 </style>
