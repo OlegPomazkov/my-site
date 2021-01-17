@@ -96,6 +96,7 @@ export default {
 	top: 25;
 	right: 0;
 	z-index: 100;
+	overflow: hidden;
 
 	animation-name: appear-down;
 	animation-duration: 2s;

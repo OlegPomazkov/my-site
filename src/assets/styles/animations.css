@@ -1,0 +1,33 @@
+$top_val: 0;
+$left_val: 0;
+$width_val: 0;
+$height_val: 0;
+
+
+:root{
+  --curr-top: $top_val;
+  --curr-left: $left_val;
+  --curr-width: $width_val;
+  --curr-height: $height_val;
+}
+
+@keyframes full-growth {
+  from {
+    top: $top_val;
+    left: $left_val;
+    height: $height_val;
+    width: $width_val;
+  }
+  to {
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+  }
+}
+
+.grouth-object {
+  animation-name: full-growth;
+  animation-duration: 3s;
+  animation-iteration-count: 1;
+}

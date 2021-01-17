@@ -4,19 +4,22 @@
 		class="move-field"
 	>
 		<div class="move-field__title">
-			JUST MY PERSONELL SITE
+			{{ $t("site_title") }}
 		</div>
 
 		<move-object
 			v-for="(obj, k) in objParams"
 			:obj-props="obj"
 			:num="k"
-			:key="k" 
+			:key="k"
+			:ref="`move-object-${k}`"
+			@clicked="handleMoveObjectClicked(k)"
 		/>
 	</div>
 </template>
 
 <script>
+/* eslint-disable */
 import Vue from 'vue'
 import MoveObject from './MoveObject'
 
@@ -68,7 +71,8 @@ export default {
 			fieldSize: {
 				w: 0,
 				h: 0
-			}
+			},
+			regularAnimTimer: null,
 		}
 	},
 
@@ -111,6 +115,21 @@ export default {
 	},
 
 	methods: {
+		handleMoveObjectClicked(num) {
+			clearTimeout(this.regularAnimTimer)
+
+			let el = this.$refs[`move-object-${num}`][0].$el
+			let styles = getComputedStyle(el)
+
+			debugger
+
+			document.body.style.setProperty('--curr-top', styles.top)
+			document.body.style.setProperty('--curr-left', styles.left)
+			document.body.style.setProperty('--curr-width', styles.width)
+			document.body.style.setProperty('--curr-height', styles.height)
+
+			el.classList.add('grouth-object')
+		},
 		setFieldSize() {
 			this.fieldSize = {
 				w: this.$refs.field.offsetWidth,
@@ -164,7 +183,7 @@ export default {
 						break
 				}
 			})
-			setTimeout( this.calculateStep, 50/3)
+			this.regularAnimTimer = setTimeout( this.calculateStep, 50/3)
 		},
 		isCollision(num, newPos) {
 			let cond = false

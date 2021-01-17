@@ -2,6 +2,7 @@
 	<div
 		class="moving-object"
 		:style="objectStyle"
+		@click="handleObjectClicked"
 	>
 
 	</div>
@@ -39,7 +40,13 @@ export default {
 				'background-color': this.objProps.color,
 			}
 		}
-	}
+	},
+
+	methods: {
+		handleObjectClicked() {
+			this.$emit('clicked')
+		}
+	},
 }
 </script>
 

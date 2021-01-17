@@ -3,5 +3,8 @@
   "resume": "РЕЗЮМЕ",
   "freestyle": "FREESTYLE",
   "art": "ART",
-  "games": "ИГРЫ"
+  "games": "ИГРЫ",
+
+  "site_title": "ПРОСТО МОЙ САЙТ-ВИЗИТКА",
+  "locale_title": "Выбрать язык"
 }
