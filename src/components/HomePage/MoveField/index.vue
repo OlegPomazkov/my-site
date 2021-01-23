@@ -19,7 +19,6 @@
 </template>
 
 <script>
-/* eslint-disable */
 import Vue from 'vue'
 import MoveObject from './MoveObject'
 
@@ -73,6 +72,7 @@ export default {
 				h: 0
 			},
 			regularAnimTimer: null,
+			grouthEl: null,
 		}
 	},
 
@@ -107,6 +107,11 @@ export default {
 			}
 			Vue.set(this.objParams, k, {...obj})
 		})
+
+		document.body.style.setProperty('--c-back-1', '#83DCD9')
+		document.body.style.setProperty('--c-back-2', '#82BED1')
+		document.body.style.setProperty('--c-back-3', '#8A9CCE')
+		
 		this.calculateStep()
 	},
 
@@ -117,18 +122,21 @@ export default {
 	methods: {
 		handleMoveObjectClicked(num) {
 			clearTimeout(this.regularAnimTimer)
-
-			let el = this.$refs[`move-object-${num}`][0].$el
-			let styles = getComputedStyle(el)
-
-			debugger
+			this.grouthEl = this.$refs[`move-object-${num}`][0].$el
+			let styles = getComputedStyle(this.grouthEl)
 
 			document.body.style.setProperty('--curr-top', styles.top)
 			document.body.style.setProperty('--curr-left', styles.left)
 			document.body.style.setProperty('--curr-width', styles.width)
 			document.body.style.setProperty('--curr-height', styles.height)
 
-			el.classList.add('grouth-object')
+			this.grouthEl.addEventListener('animationend', this.onGrowthAnimationEnd)
+			this.grouthEl.classList.add('grouth-object')
+		},
+		onGrowthAnimationEnd() {
+			this.grouthEl.removeEventListener('animationend', this.onGrowthAnimationEnd)
+			this.grouthEl = null
+			this.$router.push({name: 'ResumeFormal'})
 		},
 		setFieldSize() {
 			this.fieldSize = {
@@ -280,42 +288,42 @@ export default {
 </script>
 
 <style lang="scss">
-	@keyframes backcolors {
-		from {
-			background-color: #83DCD9;
-		}
-		25% {
-			background-color: #82BED1;
-		}
-		50% {
-			background-color: #8A9CCE;
-		}
-		75% {
-			background-color: #82BED1;
-		}
-		to {
-			background-color: #83DCD9;
-		}
+@keyframes backcolors {
+	from {
+		background-color: var(--c-back-1);
 	}
-	.move-field {
-		animation-name: backcolors;
-		animation-duration: 15s;
-		animation-iteration-count: infinite;
+	25% {
+		background-color: var(--c-back-2);
+	}
+	50% {
+		background-color: var(--c-back-3);
+	}
+	75% {
+		background-color: var(--c-back-2);
+	}
+	to {
+		background-color: var(--c-back-1);
+	}
+}
+.move-field {
+	animation-name: backcolors;
+	animation-duration: 15s;
+	animation-iteration-count: infinite;
 
-		position: relative;
-		box-sizing: border-box;
-		width: 100%;
-		height: 100%;
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		overflow: hidden;
-	}
-	.move-field__title {
-		font-size: 3rem;
-		font-weight: bolder;
-		color: grey;
-		opacity: 0.7;
-		z-index: 100;
-	}
+	position: relative;
+	box-sizing: border-box;
+	width: 100%;
+	height: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	overflow: hidden;
+}
+.move-field__title {
+	font-size: 3rem;
+	font-weight: bolder;
+	color: grey;
+	opacity: 0.7;
+	z-index: 100;
+}
 </style>
