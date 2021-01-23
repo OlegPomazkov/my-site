@@ -5,22 +5,27 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
 	state: {
-		locale: 'ru'  // enum with values <'ru'|'en'>
+		locale: 'ru',  // enum with values <'ru'|'en'>
+		palette: 'pastel'
 	},
 
 	getters: {
-		currLocale: state => state.locale
+		currLocale: state => state.locale,
+		currPalette: state => state.palette
 	},
 
 	mutations: {
-		SET_LOCALE(state, locale) {
-			state.locale = locale
-		}
+		UPDATE_SETTING(state, {setting, value}) {
+			state[setting] = value
+		},
 	},
 
 	actions: {
-		setLocale({commit}, locale) {
-			commit('SET_LOCALE', locale)
-		}
+		updateSetting({commit}, {setting, value}) {
+			commit('UPDATE_SETTING', {
+				setting: setting,
+				value:value
+			})
+		},
 	},
 })

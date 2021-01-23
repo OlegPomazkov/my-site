@@ -1,62 +1,45 @@
 <template>
-	<div class="header-settings">
-		<div class="header-settings__section-title">
-			{{ $t('locale_title') }}
-		</div>
-
-		<div
-			:class="`header-settings__section-item ${isActive(k)}`"
-			v-for="(item, k) in locales"
-			:key="`${k}_${item.value}`"
-			@click="handleItemClicked(k)"
-		>
-			{{ item.label }}
-		</div>
+<div class="settings-section">
+	<div class="settings-section__title">
+		{{ $t(section.title) }}
 	</div>
+
+	<div
+		:class="`settings-section__item ${isActive(k)}`"
+		v-for="(item, k) in section.list"
+		:key="`${k}_${item.value}`"
+		@click="handleItemClicked(k)"
+	>
+		{{ $t(item.label) }}
+	</div>
+</div>
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
-
-const LOCALES = [
-	{
-		label: "Русский",
-		value: 'ru'
-	},
-	{
-		label: "English",
-		value: 'en'
-	}
-]
-
 export default {
-	data() {
-		return {
-			locales: LOCALES
+	props: {
+		section: {
+			type: Object,
+			required: true,
 		}
-	},
-
-	computed: {
-		...mapGetters(['currLocale'])
 	},
 
 	methods: {
 		isActive(num) {
-			return this.currLocale === this.locales[num].value? 'active': ''
+			return this.section.isActive === this.section.list[num].value? 'active': ''
 		},
 		handleItemClicked(num) {
-			this.$i18n.locale = this.locales[num].value
-			this.$store.dispatch('setLocale', this.locales[num].value)
+			this.$emit('item-clicked', num)
 		}
 	}
 }
 </script>
 
 <style lang="scss">
-.header-settings {
+.settings-section {
 	box-sizing: border-box;
-	width: 15rem;
-	height: auto;
+	width: 100%;
+	height: 100%;
 	padding: 0.3rem;
 	display: flex;
 	flex-direction: column;
@@ -64,7 +47,7 @@ export default {
 	align-items: flex-start;
 	background-color: white;
 }
-.header-settings__section-title {
+.settings-section__title {
 	box-sizing: border-box;
 	width: 100%;
 	height: 2.2rem;
@@ -80,7 +63,7 @@ export default {
 	color: grey;
 	background-color: #f0f0f0;
 }
-.header-settings__section-item {
+.settings-section__item {
 	box-sizing: border-box;
 	width: 100%;
 	height: 1.9rem;

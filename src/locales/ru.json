@@ -6,5 +6,9 @@
   "games": "ИГРЫ",
 
   "site_title": "ПРОСТО МОЙ САЙТ-ВИЗИТКА",
-  "locale_title": "Выбрать язык"
+  "locale_title": "Выбрать язык",
+  "palette_title": "Выбрать палитру",
+  "pastel": "Пастельная",
+  "bright": "Яркая",
+  "sepia": "Сепия"
 }

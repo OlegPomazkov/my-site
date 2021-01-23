@@ -6,5 +6,9 @@
   "games": "GAMES",
 
   "site_title": "JUST MY PERSONELL SITE",
-  "locale_title": "Choose language"
+  "locale_title": "Choose language",
+  "palette_title": "Choose palette",
+  "pastel": "Pastel",
+  "bright": "Bright",
+  "sepia": "Sepia"
 }
