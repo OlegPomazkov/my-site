@@ -1,4 +1,4 @@
-const PALETTE_CONFIG = {
+export const PALETTE_CONFIG = {
 		colorBlock1: '--c-block-1',
 		colorBlock2: '--c-block-2',
 		colorBlock3: '--c-block-3',
@@ -11,58 +11,67 @@ const PALETTE_CONFIG = {
 		colorBack2: '--c-back-2',
 		colorBack3: '--c-back-3',
 }
-const PALETTES = [
+export const PALETTES = [
 	{
 		name: 'pastel',
 		label: 'pastel',
 		palette: {
-			colorBlock1: '#EDAA8F',
-			colorBlock2: '#F8CB81',
-			colorBlock3: '#FCE378',
-			colorBlock4: '#FDD395',
-			colorBlock5: '#FDFA98',
-			colorBlock6: '#ACE1A1',
-			colorBlock7: '#639BE3',
-
-			colorBack1: '#83DCD9',
-			colorBack2: '#82BED1',
-			colorBack3: '#8A9CCE',
+			blocks: [
+				{var: 'colorBlock1', value: '#EDAA8F'},
+				{var: 'colorBlock2', value: '#F8CB81'},
+				{var: 'colorBlock3', value: '#FCE378'},
+				{var: 'colorBlock4', value: '#FDD395'},
+				{var: 'colorBlock5', value: '#FDFA98'},
+				{var: 'colorBlock6', value: '#ACE1A1'},
+				{var: 'colorBlock7', value: '#639BE3'},
+			],
+			backgrounds: [
+				{var: 'colorBack1', value: '#83DCD9'},
+				{var: 'colorBack2', value: '#82BED1'},
+				{var: 'colorBack3', value: '#8A9CCE'},				
+			]
 		}
 	},
 	{
 		name: 'bright',
 		label: 'bright',
 		palette: {
-			colorBlock1: '#EDAA8F',
-			colorBlock2: '#F8CB81',
-			colorBlock3: '#FCE378',
-			colorBlock4: '#FDD395',
-			colorBlock5: '#FDFA98',
-			colorBlock6: '#ACE1A1',
-			colorBlock7: '#639BE3',
-
-			colorBack1: '#83DCD9',
-			colorBack2: '#82BED1',
-			colorBack3: '#8A9CCE',
+			blocks: [
+				{var: 'colorBlock1', value: '#F94144'},
+				{var: 'colorBlock2', value: '#F3722C'},
+				{var: 'colorBlock3', value: '#F8961E'},
+				{var: 'colorBlock4', value: '#F9844A'},
+				{var: 'colorBlock5', value: '#F9C74F'},
+				{var: 'colorBlock6', value: '#90BE6D'},
+				{var: 'colorBlock7', value: '#43AA8B'},
+			],
+			backgrounds: [
+				{var: 'colorBack1', value: '#4D908E'},
+				{var: 'colorBack2', value: '#577590'},
+				{var: 'colorBack3', value: '#277DA1'},				
+			]
 		}
 	},
 	{
 		name: 'sepia',
 		label: 'sepia',
 		palette: {
-			colorBlock1: '#EDAA8F',
-			colorBlock2: '#F8CB81',
-			colorBlock3: '#FCE378',
-			colorBlock4: '#FDD395',
-			colorBlock5: '#FDFA98',
-			colorBlock6: '#ACE1A1',
-			colorBlock7: '#639BE3',
-
-			colorBack1: '#83DCD9',
-			colorBack2: '#82BED1',
-			colorBack3: '#8A9CCE',
+			blocks: [
+				{var: 'colorBlock1', value: '#EDC4B3'},
+				{var: 'colorBlock2', value: '#E6B8A2'},
+				{var: 'colorBlock3', value: '#DEAB90'},
+				{var: 'colorBlock4', value: '#D69F7E'},
+				{var: 'colorBlock5', value: '#CD9777'},
+				{var: 'colorBlock6', value: '#C39E70'},
+				{var: 'colorBlock7', value: '#B07D62'},
+			],
+			backgrounds: [
+				{var: 'colorBack1', value: '#9D6B53'},
+				{var: 'colorBack2', value: '#8A5A44'},
+				{var: 'colorBack3', value: '#774936'},				
+			]
 		}
 	}
 ]
 
-export { PALETTE_CONFIG, PALETTES }
+// export { PALETTE_CONFIG, PALETTES }

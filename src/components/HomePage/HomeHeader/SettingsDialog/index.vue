@@ -19,6 +19,7 @@ import SettingsSection from './SettingsSection'
 
 import { LOCALES } from '@/assets/constants/locales'
 import { PALETTES } from '@/assets/constants/palettes'
+import { setPalette } from '@/utils/utils'
 
 export default {
 	components: {
@@ -70,6 +71,7 @@ export default {
 			this.localeSection.isActive = this.currLocale
 		},
 		handlePaletteItemClicked(num) {
+			setPalette(this.paletteSection.list[num].value)
 			this.$store.dispatch('updateSetting', {
 				setting: 'palette',
 				value: this.paletteSection.list[num].value

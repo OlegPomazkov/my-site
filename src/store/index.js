@@ -1,6 +1,8 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 
+import { PALETTES } from '@/assets/constants/palettes'
+
 Vue.use(Vuex)
 
 export default new Vuex.Store({
@@ -11,7 +13,12 @@ export default new Vuex.Store({
 
 	getters: {
 		currLocale: state => state.locale,
-		currPalette: state => state.palette
+		currPalette: state => state.palette,
+		currBlocksColors: state => {
+			let palette = PALETTES.find(i => i.name === state.palette)
+
+			return palette.palette.blocks.map(i => i.value)
+		},
 	},
 
 	mutations: {

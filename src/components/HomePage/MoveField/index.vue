@@ -20,6 +20,8 @@
 
 <script>
 import Vue from 'vue'
+import { mapGetters } from 'vuex'
+
 import MoveObject from './MoveObject'
 
 const DIRECTIONS = [
@@ -28,15 +30,15 @@ const DIRECTIONS = [
 	'up',
 	'down'
 ]
-const PALETTE = [
-		'#EDAA8F',
-		'#F8CB81',
-		'#FCE378',
-		'#FDD395',
-		'#FDFA98',
-		'#ACE1A1',
-		'#639BE3'
-]
+// const PALETTE = [
+// 		'#EDAA8F',
+// 		'#F8CB81',
+// 		'#FCE378',
+// 		'#FDD395',
+// 		'#FDFA98',
+// 		'#ACE1A1',
+// 		'#639BE3'
+// ]
 const NULL_OBJECT = {
 	top: 0,
 	left: 0,
@@ -76,6 +78,10 @@ export default {
 		}
 	},
 
+	computed: {
+		...mapGetters(['currBlocksColors'])
+	},
+
 	mounted() {
 		let dir = 4
 
@@ -84,7 +90,7 @@ export default {
 		this.objParams.forEach((obj, k) => { 
 			obj.w = this.fieldSize.w / 4.2,
 			obj.h = this.fieldSize.h / 4.2,
-			obj.color = PALETTE[Math.floor(Math.random() * PALETTE.length)],
+			obj.color = this.currBlocksColors[Math.floor(Math.random() * this.currBlocksColors.length)],
 			obj.direction = DIRECTIONS[dir%4]
 			dir += 1
 			switch(obj.direction) {
@@ -108,9 +114,9 @@ export default {
 			Vue.set(this.objParams, k, {...obj})
 		})
 
-		document.body.style.setProperty('--c-back-1', '#83DCD9')
-		document.body.style.setProperty('--c-back-2', '#82BED1')
-		document.body.style.setProperty('--c-back-3', '#8A9CCE')
+		// document.body.style.setProperty('--c-back-1', '#83DCD9')
+		// document.body.style.setProperty('--c-back-2', '#82BED1')
+		// document.body.style.setProperty('--c-back-3', '#8A9CCE')
 		
 		this.calculateStep()
 	},
@@ -279,7 +285,7 @@ export default {
 				left: newLeft,
 				w: this.fieldSize.w / 4.2,
 				h: this.fieldSize.h / 4.2,
-				color: PALETTE[Math.floor(Math.random() * PALETTE.length)],
+				color: this.currBlocksColors[Math.floor(Math.random() * this.currBlocksColors.length)],
 				direction: this.objParams[num].direction				
 			})
 		}

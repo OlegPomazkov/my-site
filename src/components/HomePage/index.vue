@@ -35,7 +35,7 @@ export default {
 .home-page__header {
   height: 3rem;
   width: 100%;
-  background-color: #83DCD9;
+  background-color: var(--c-back-1);
 }
 .home-page__main {
   width: 100%;
@@ -45,6 +45,6 @@ export default {
   height: 3rem;
   width: 100%;
   color: white;
-  background-color: #8A9CCE;
+  background-color: var(--c-back-3);
 }
 </style>
