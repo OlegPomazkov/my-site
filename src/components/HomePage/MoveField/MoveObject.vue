@@ -4,7 +4,12 @@
 		:style="objectStyle"
 		@click="handleObjectClicked"
 	>
-
+		<div
+			v-if="objProps.route"
+			class="moving-object__title"
+		>
+			{{ $t(objProps.route.label) }}
+		</div>
 	</div>
 </template>
 
@@ -53,5 +58,14 @@ export default {
 <style lang="scss">
 .moving-object {
 	position: absolute;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	&__title {
+		font-size: 1.5rem;
+		font-weight: bold;
+		color: black;
+	}
 }
 </style>

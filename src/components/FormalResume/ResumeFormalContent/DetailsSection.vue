@@ -1,6 +1,9 @@
 <template>
 	<div class="details-section">
-		<div class="details-section__title">
+		<div 
+			v-if="info.title"
+			class="details-section__title"
+		>
 			{{ info.title }}		
 		</div>
 
@@ -14,17 +17,27 @@
 			</div>
 
 			<div class="item-subsection">
-				<div class="item-subsection__position">
+				<div 
+					v-if="item.position"
+					class="item-subsection__position"
+				>
 					{{ item.position }}
 				</div>
 
-				<div class="item-subsection__dates">
+				<div 
+					v-if="item.dates"
+					class="item-subsection__dates"
+				>
 					{{`${item.dates.start} - ${item.dates.stop}`}}
 				</div>
 			</div>
 
-			<div class="item-details">
-				{{ item.details }}
+			<div 
+				class="item-details"
+				v-for="(part, k) in item.details"
+				:key="`${k}_${part.split(0, 5)}`"
+			>
+				{{ part }}
 			</div>
 		</div>
 	</div>

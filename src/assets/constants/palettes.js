@@ -17,18 +17,18 @@ export const PALETTES = [
 		label: 'pastel',
 		palette: {
 			blocks: [
-				{var: 'colorBlock1', value: '#EDAA8F'},
-				{var: 'colorBlock2', value: '#F8CB81'},
-				{var: 'colorBlock3', value: '#FCE378'},
-				{var: 'colorBlock4', value: '#FDD395'},
-				{var: 'colorBlock5', value: '#FDFA98'},
-				{var: 'colorBlock6', value: '#ACE1A1'},
-				{var: 'colorBlock7', value: '#639BE3'},
+				{var: 'colorBlock1', value: '#FEC5BB'},
+				{var: 'colorBlock2', value: '#FCD5CE'},
+				{var: 'colorBlock3', value: '#FAE1DD'},
+				{var: 'colorBlock4', value: '#F8EDEB'},
+				{var: 'colorBlock5', value: '#E8E8E4'},
+				{var: 'colorBlock6', value: '#D8E2DC'},
+				{var: 'colorBlock7', value: '#ECE4DB'},
 			],
 			backgrounds: [
-				{var: 'colorBack1', value: '#83DCD9'},
-				{var: 'colorBack2', value: '#82BED1'},
-				{var: 'colorBack3', value: '#8A9CCE'},				
+				{var: 'colorBack1', value: '#FFE5D9'},
+				{var: 'colorBack2', value: '#FFD7BA'},
+				{var: 'colorBack3', value: '#FEC89A'},				
 			]
 		}
 	},
@@ -73,5 +73,3 @@ export const PALETTES = [
 		}
 	}
 ]
-
-// export { PALETTE_CONFIG, PALETTES }

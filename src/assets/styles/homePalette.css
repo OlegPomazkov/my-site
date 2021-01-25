@@ -1,14 +1,14 @@
 html {
   /* palette colors */
-  --c-block-1: #EDAA8F;
-  --c-block-2: #F8CB81;
-  --c-block-3: #FCE378;
-  --c-block-4: #FDD395;
-  --c-block-5: #FDFA98;
-  --c-block-6: #ACE1A1;
-  --c-block-7: #639BE3;
+  --c-block-1: #FEC5BB;
+  --c-block-2: #FCD5CE;
+  --c-block-3: #FAE1DD;
+  --c-block-4: #F8EDEB;
+  --c-block-5: #E8E8E4;
+  --c-block-6: #D8E2DC;
+  --c-block-7: #ECE4DB;
 
-  --c-back-1: #83DCD9;
-  --c-back-2: #82BED1;
-  --c-back-3: #8A9CCE;
+  --c-back-1: #FFE5D9;
+  --c-back-2: #FFD7BA;
+  --c-back-3: #FEC89A;
 }

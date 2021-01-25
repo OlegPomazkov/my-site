@@ -16,7 +16,9 @@
 
 		<div class="resume-formal-content__content">
 			<div class="resume-formal-content__content__common">
-				Skills and contacts here
+				<details-section 
+					:info="resumeData[locale].commonsSummary"
+				/>
 			</div>
 
 			<div class="resume-formal-content__content__details">
@@ -27,8 +29,10 @@
 				<details-section 
 					:info="resumeData[locale].education"
 				/>
-				<!-- family/hobby -->
-				
+
+				<details-section 
+					:info="resumeData[locale].addons"
+				/>				
 			</div>
 		</div>
 	</div>
@@ -64,7 +68,6 @@ export default {
 .resume-formal-content {
 	box-sizing: border-box;
 	width: 100%;
-	height: 100%;
 	display: flex;
 	flex-direction: column;
 	justify-content: flex-start;

@@ -1,5 +1,5 @@
-import { PALETTES } from '@/assets/constants/palettes'
-import { PALETTE_CONFIG } from '@/assets/constants/palettes'
+import { PALETTES, PALETTE_CONFIG } from '@/assets/constants/palettes'
+// import { PALETTE_CONFIG } from '@/assets/constants/palettes'
 
 const palettes = PALETTES
 const paletteConfig = PALETTE_CONFIG

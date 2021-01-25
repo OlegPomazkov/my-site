@@ -24,21 +24,22 @@ import { mapGetters } from 'vuex'
 
 import MoveObject from './MoveObject'
 
+const HOME_ROUTES = [
+	{
+		name: 'ResumeFormal',
+		label: "resume"
+	},
+	{
+		name: 'About',
+		label: "about"
+	},
+]
 const DIRECTIONS = [
 	'left',
 	'right',
 	'up',
 	'down'
 ]
-// const PALETTE = [
-// 		'#EDAA8F',
-// 		'#F8CB81',
-// 		'#FCE378',
-// 		'#FDD395',
-// 		'#FDFA98',
-// 		'#ACE1A1',
-// 		'#639BE3'
-// ]
 const NULL_OBJECT = {
 	top: 0,
 	left: 0,
@@ -75,6 +76,7 @@ export default {
 			},
 			regularAnimTimer: null,
 			grouthEl: null,
+			routeName: '',
 		}
 	},
 
@@ -87,7 +89,12 @@ export default {
 
 		window.addEventListener('resize', this.setFieldSize)
 		this.setFieldSize() 
-		this.objParams.forEach((obj, k) => { 
+		this.objParams.forEach((obj, k) => {
+			// Set route to object
+			if(k in HOME_ROUTES) {
+				obj.route = {...HOME_ROUTES[k]}
+			}
+
 			obj.w = this.fieldSize.w / 4.2,
 			obj.h = this.fieldSize.h / 4.2,
 			obj.color = this.currBlocksColors[Math.floor(Math.random() * this.currBlocksColors.length)],
@@ -113,11 +120,6 @@ export default {
 			}
 			Vue.set(this.objParams, k, {...obj})
 		})
-
-		// document.body.style.setProperty('--c-back-1', '#83DCD9')
-		// document.body.style.setProperty('--c-back-2', '#82BED1')
-		// document.body.style.setProperty('--c-back-3', '#8A9CCE')
-		
 		this.calculateStep()
 	},
 
@@ -127,6 +129,9 @@ export default {
 
 	methods: {
 		handleMoveObjectClicked(num) {
+			if( !this.objParams[num].route ) return
+
+			this.routeName = this.objParams[num].route.name
 			clearTimeout(this.regularAnimTimer)
 			this.grouthEl = this.$refs[`move-object-${num}`][0].$el
 			let styles = getComputedStyle(this.grouthEl)
@@ -140,9 +145,12 @@ export default {
 			this.grouthEl.classList.add('grouth-object')
 		},
 		onGrowthAnimationEnd() {
+			let routeName = this.routeName
+
+			this.routeName = ''
 			this.grouthEl.removeEventListener('animationend', this.onGrowthAnimationEnd)
 			this.grouthEl = null
-			this.$router.push({name: 'ResumeFormal'})
+			this.$router.push({name: routeName})
 		},
 		setFieldSize() {
 			this.fieldSize = {
@@ -286,7 +294,8 @@ export default {
 				w: this.fieldSize.w / 4.2,
 				h: this.fieldSize.h / 4.2,
 				color: this.currBlocksColors[Math.floor(Math.random() * this.currBlocksColors.length)],
-				direction: this.objParams[num].direction				
+				direction: this.objParams[num].direction,
+				route: (num in HOME_ROUTES)? {...HOME_ROUTES[num]}: undefined		
 			})
 		}
 	},
