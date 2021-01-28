@@ -42,6 +42,7 @@ export default {
   flex: 1;
 }
 .home-page__footer {
+  box-sizing: border-box;
   height: 3rem;
   width: 100%;
   color: white;

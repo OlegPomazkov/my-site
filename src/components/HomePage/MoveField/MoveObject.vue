@@ -1,15 +1,11 @@
 <template>
 	<div
+		ref="moving-object"
 		class="moving-object"
 		:style="objectStyle"
 		@click="handleObjectClicked"
 	>
-		<div
-			v-if="objProps.route"
-			class="moving-object__title"
-		>
-			{{ $t(objProps.route.label) }}
-		</div>
+		{{ $t(label) }}
 	</div>
 </template>
 
@@ -30,8 +26,15 @@ export default {
 				}
 			}
 		},
-		num: {
-			type: Number
+		label: {
+			type: String,
+			default: () => ''
+		}
+	},
+
+	data() {
+		return {
+			fontSize: 11,
 		}
 	},
 
@@ -43,11 +46,28 @@ export default {
 				'width': `${this.objProps.w}px`,
 				'height': `${this.objProps.h}px`,
 				'background-color': this.objProps.color,
+				'z-index': `${this.label? 10: 0}`,
+				'font-size': `${this.fontSize}px`,
 			}
-		}
+		},
+	},
+
+	mounted() {
+		this.updateFontSize()
+		this.$el.addEventListener('resize', this.updateFontSize)
+	},
+
+	beforeDestroy() {
+		this.$el.addEventListener('resize', this.updateFontSize)
 	},
 
 	methods: {
+		updateFontSize() {
+			let w = (+this.$el.offsetWidth)*0.125
+			let h = (+this.$el.offsetheight)*0.7
+
+			this.fontSize = (w > h)? h: w
+		},
 		handleObjectClicked() {
 			this.$emit('clicked')
 		}
@@ -61,11 +81,6 @@ export default {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-
-	&__title {
-		font-size: 1.5rem;
-		font-weight: bold;
-		color: black;
-	}
+	color: grey;
 }
 </style>

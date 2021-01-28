@@ -5,7 +5,7 @@
 				<custom-button
 					v-for="(item, k) in navConfig"
 					:key="`${k}_${item.page}`" 
-					:text="$t(item.label)"
+					:text="$t(item.page)"
 					:width="'8rem'"
 					:height="'2rem'"
 					@clicked="handlePageLinkClicked(k)"
@@ -31,20 +31,16 @@ import SettingsDialog from './SettingsDialog'
 
 const HOME_NAV_CONFIG = [
 	{
-		label: 'resume',
 		page: 'ResumeFormal'
 	},
 	{
-		label: 'freestyle',
-		page: 'About'
+		page: 'Art'
 	},
 	{
-		label: 'art',
-		page: 'About'
+		page: 'Freestyle'
 	},
 	{
-		label: 'games',
-		page: 'About'
+		page: 'Games'
 	},
 ]
 

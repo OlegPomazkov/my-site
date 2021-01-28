@@ -1,9 +1,10 @@
 {
-  "message": "привет i18n !!", 
-  "resume": "РЕЗЮМЕ",
-  "freestyle": "FREESTYLE",
-  "art": "ART",
-  "games": "ИГРЫ",
+  "coming_soon_message": "Простите, страница в разработке ...",
+  "coming_soon_home": "На главную",
+  "ResumeFormal": "РЕЗЮМЕ",
+  "Freestyle": "FREESTYLE",
+  "Art": "ART",
+  "Games": "ИГРЫ",
 
   "site_title": "ПРОСТО МОЙ САЙТ-ВИЗИТКА",
   "locale_title": "Выбрать язык",

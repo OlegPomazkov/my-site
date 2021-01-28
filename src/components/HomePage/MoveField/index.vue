@@ -10,8 +10,8 @@
 		<move-object
 			v-for="(obj, k) in objParams"
 			:obj-props="obj"
-			:num="k"
-			:key="k"
+			:label="labels[k]"
+			:key="`${k}_${labels[k]}`"
 			:ref="`move-object-${k}`"
 			@clicked="handleMoveObjectClicked(k)"
 		/>
@@ -25,20 +25,16 @@ import { mapGetters } from 'vuex'
 import MoveObject from './MoveObject'
 
 const HOME_ROUTES = [
-	{
-		name: 'ResumeFormal',
-		label: "resume"
-	},
-	{
-		name: 'About',
-		label: "about"
-	},
+	'ResumeFormal',
+	'Freestyle',
+	'Art',
+	'Games',
 ]
 const DIRECTIONS = [
 	'left',
 	'right',
 	'up',
-	'down'
+	'down',
 ]
 const NULL_OBJECT = {
 	top: 0,
@@ -61,19 +57,25 @@ export default {
 	},
 
 	data() {
-		let arr = []
+		let objArr = []
+		let labelsArr = []
 
 		for(let i = 0; i < INIT_PARAMS.numOfObj; i++) {
-			arr.push({...NULL_OBJECT})
+			let obj ={ 
+				id: `id_${i}`
+			}
+			objArr.push(Object.assign(obj, NULL_OBJECT)),
+			labelsArr.push('') // (i in HOME_ROUTES)? HOME_ROUTES[i]: '')
 		}
 
 		return {
 			objStep: INIT_PARAMS.objStep,
-			objParams: arr,
+			objParams: objArr,
 			fieldSize: {
 				w: 0,
 				h: 0
 			},
+			labels: labelsArr,
 			regularAnimTimer: null,
 			grouthEl: null,
 			routeName: '',
@@ -90,37 +92,42 @@ export default {
 		window.addEventListener('resize', this.setFieldSize)
 		this.setFieldSize() 
 		this.objParams.forEach((obj, k) => {
-			// Set route to object
-			if(k in HOME_ROUTES) {
-				obj.route = {...HOME_ROUTES[k]}
-			}
+			let top
+			let left
+			let w = this.fieldSize.w / 4.2
+			let h = this.fieldSize.h / 4.2
+			let direction = DIRECTIONS[dir%4]
 
-			obj.w = this.fieldSize.w / 4.2,
-			obj.h = this.fieldSize.h / 4.2,
-			obj.color = this.currBlocksColors[Math.floor(Math.random() * this.currBlocksColors.length)],
-			obj.direction = DIRECTIONS[dir%4]
 			dir += 1
-			switch(obj.direction) {
+			switch(direction) {
 				case 'right':
-					obj.top = Math.floor(Math.random() * (this.fieldSize.h - obj.h))
-					obj.left = -obj.w
+					top = Math.floor(Math.random() * (this.fieldSize.h - h))
+					left = -w
 					break
 				case 'left':
-					obj.top = Math.floor(Math.random() * (this.fieldSize.h - obj.h))
-					obj.left = this.fieldSize.w
+					top = Math.floor(Math.random() * (this.fieldSize.h - h))
+					left = this.fieldSize.w
 					break
 				case 'up':
-					obj.top = this.fieldSize.h
-					obj.left = Math.floor(Math.random() * (this.fieldSize.w - obj.w))
+					top = this.fieldSize.h
+					left = Math.floor(Math.random() * (this.fieldSize.w - w))
 					break
 				case 'down':
-					obj.top = -obj.h
-					obj.left = Math.floor(Math.random() * (this.fieldSize.w - obj.w))
+					top = -h
+					left = Math.floor(Math.random() * (this.fieldSize.w - w))
 					break
 			}
-			Vue.set(this.objParams, k, {...obj})
-		})
+			Vue.set(this.objParams[k], 'direction', direction)
+			Vue.set(this.objParams[k], 'top', top)
+			Vue.set(this.objParams[k], 'left', left)
+			Vue.set(this.objParams[k], 'w', w)
+			Vue.set(this.objParams[k], 'h', h)
+			Vue.set(this.objParams[k], 'color', this.currBlocksColors[Math.floor(Math.random() * this.currBlocksColors.length)])
+
+		}) 
+		this.setLabels()
 		this.calculateStep()
+		// setTimeout(this.setLabels, 3000)
 	},
 
 	beforeDestroy() {
@@ -128,10 +135,17 @@ export default {
 	},
 
 	methods: {
+		setLabels() {
+			for( let i = 0; i< this.labels.length; i++) {
+				if( i in HOME_ROUTES ) {
+					Vue.set(this.labels, i, HOME_ROUTES[i])
+				}
+			}
+		},
 		handleMoveObjectClicked(num) {
-			if( !this.objParams[num].route ) return
+			if( !this.labels[num]) return
 
-			this.routeName = this.objParams[num].route.name
+			this.routeName = this.labels[num]
 			clearTimeout(this.regularAnimTimer)
 			this.grouthEl = this.$refs[`move-object-${num}`][0].$el
 			let styles = getComputedStyle(this.grouthEl)
@@ -288,15 +302,11 @@ export default {
 					newLeft = Math.floor(Math.random() * (this.fieldSize.w - this.objParams[num].w))
 					break
 			}
-			Vue.set(this.objParams, num, {
-				top: newTop,
-				left: newLeft,
-				w: this.fieldSize.w / 4.2,
-				h: this.fieldSize.h / 4.2,
-				color: this.currBlocksColors[Math.floor(Math.random() * this.currBlocksColors.length)],
-				direction: this.objParams[num].direction,
-				route: (num in HOME_ROUTES)? {...HOME_ROUTES[num]}: undefined		
-			})
+			Vue.set(this.objParams[num], 'top', newTop)
+			Vue.set(this.objParams[num], 'left', newLeft)
+			Vue.set(this.objParams[num], 'w', this.fieldSize.w / 4.2,)
+			Vue.set(this.objParams[num], 'h', this.fieldSize.h / 4.2,)
+			Vue.set(this.objParams[num], 'color', this.currBlocksColors[Math.floor(Math.random() * this.currBlocksColors.length)])
 		}
 	},
 }
@@ -339,6 +349,6 @@ export default {
 	font-weight: bolder;
 	color: grey;
 	opacity: 0.7;
-	z-index: 100;
+	z-index: 5;
 }
 </style>

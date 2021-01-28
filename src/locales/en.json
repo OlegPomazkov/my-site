@@ -1,9 +1,10 @@
 {
-  "message": "Hy i18n !!", 
-  "resume": "RESUME",
-  "freestyle": "FREESTYLE",
-  "art": "ART",
-  "games": "GAMES",
+  "coming_soon_message": "Sorry, coming soon ...",
+  "coming_soon_home": "Home page",
+  "ResumeFormal": "RESUME",
+  "Freestyle": "FREESTYLE",
+  "Art": "ART",
+  "Games": "GAMES",
 
   "site_title": "JUST MY PERSONELL SITE",
   "locale_title": "Choose language",

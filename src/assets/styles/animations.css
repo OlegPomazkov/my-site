@@ -17,12 +17,15 @@ $height_val: 0;
     left: $left_val;
     height: $height_val;
     width: $width_val;
+    z-index: 100;
   }
   to {
     top: 0;
     left: 0;
     height: 100%;
     width: 100%;
+    z-index: 100;
+    font-size: 5rem;
   }
 }
 
@@ -30,4 +33,5 @@ $height_val: 0;
   animation-name: full-growth;
   animation-duration: 3s;
   animation-iteration-count: 1;
+  animation-fill-mode: forwards;
 }

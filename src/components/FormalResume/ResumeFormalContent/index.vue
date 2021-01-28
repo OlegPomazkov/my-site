@@ -1,16 +1,25 @@
 <template>
 	<div class="resume-formal-content">
 		<div class="resume-formal-content__header">
-			<div class="resume-formal-content__header__name">
-				{{ resumeData[locale].name }}
+			<div class="content-wrapper">	
+				<div class="content-wrapper__name">
+					{{ resumeData[locale].name }}
+				</div>
+
+				<div class="content-wrapper__position">
+					{{ resumeData[locale].position }}
+				</div>
+				
+				<div class="content-wrapper__comments">
+					{{ resumeData[locale].comment }}
+				</div>
 			</div>
 
-			<div class="resume-formal-content__header__position">
-				{{ resumeData[locale].position }}
-			</div>
-			
-			<div class="resume-formal-content__header__comments">
-				{{ resumeData[locale].comment }}
+			<div 
+				class="content-control"
+				@click="handleHomeClicked"
+			>
+				{{ $t('coming_soon_home') }}
 			</div>
 		</div>
 
@@ -61,6 +70,12 @@ export default {
 			locale: 'currLocale'
 		})
 	},
+
+	methods: {
+		handleHomeClicked() {
+			this.$router.push({name: "Home"})
+		}
+	}
 }
 </script>
 
@@ -72,33 +87,61 @@ export default {
 	flex-direction: column;
 	justify-content: flex-start;
 	align-items: center;
-	overflow: auto;
+	overflow: hidden;
 }
 .resume-formal-content__header {
 	box-sizing: border-box;
 	width: 100%;
 	padding: 1rem;
 	display: flex;
-	flex-direction: column;
-	justify-content: flex-start;
+	flex-direction: row;
+	justify-content: space-between;
 	align-items: flex-start;
 
-	&__name {
-		margin-bottom: 0.1rem;
-		font-size: 1.5rem;
-		font-weigth: bolder;
-		color: grey;
+	.content-wrapper {
+		box-sizing: border-box;
+		display: flex;
+		flex-direction: column;
+		justify-content: flex-start;
+		align-items: flex-start;
+		
+		&__name {
+			margin-bottom: 0.1rem;
+			font-size: 1.5rem;
+			font-weigth: bolder;
+			color: grey;
+		}
+		&__position {
+			margin-bottom: 0.25rem;
+			font-size: 1.2rem;
+			font-weigth: bold;
+			color: grey;
+		}
+		&__comment {
+			font-size: 0.9rem;
+			font-weigth: regular;
+			color: grey;
+		}
 	}
-	&__position {
-		margin-bottom: 0.25rem;
-		font-size: 1.2rem;
+	.content-control {
+		box-sizing: border-box;
+		width: 8rem;
+		height:3rem;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		font-size: 1rem;
 		font-weigth: bold;
 		color: grey;
-	}
-	&__comment {
-		font-size: 0.9rem;
-		font-weigth: regular;
-		color: grey;
+		border: 2px solid grey;
+		background-color: #f5f5f5;
+		border-radius: 1.5rem;
+
+		&:hover {
+			cursor: pointer;
+			background-color: #f0f0f0;
+			border-color: #909090;
+		}
 	}
 }
 .resume-formal-content__content {
@@ -117,13 +160,14 @@ export default {
 		width: 25%;
 		height: 100%;
 		padding: 0.5rem;
-		border-right: 1px solid grey;
 	}
 	&__details {
 		box-sizing: border-box;
 		height: 100%;
 		padding: 0.5rem;
 		flex: 1;
+		background-color: #f5f5f5;
+		overflow: auto;
 	}
 }
 </style>
