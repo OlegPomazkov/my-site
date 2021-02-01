@@ -1,11 +1,20 @@
 <template>
-	<div class="move-field">
+	<div 
+		class="move-field"
+		@click="handleClicked"
+	>
 		ART ONE
 	</div>
 </template>
 
 <script>
-export default {
+export default {	
+	methods: {
+		handleClicked() {
+			this.$emit('clicked')
+		}
+	}
+
 }
 </script>
 

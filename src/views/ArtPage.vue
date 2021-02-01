@@ -1,7 +1,5 @@
 <template>
-	<div>
-		<art-page-content />
-	</div>
+	<art-page-content class="art-page"/>
 </template>
 
 <script>
@@ -15,4 +13,9 @@ export default {
 </script>
 
 <style type="scss">
+.art-page {
+	box-sizing: border-box;
+	width: 100%;
+	height: 100%;
+}
 </style>

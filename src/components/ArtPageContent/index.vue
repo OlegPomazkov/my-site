@@ -1,8 +1,18 @@
 <template>
-  <div class="home-page">
-    <art-header class="home-page__header"/>
-    <art-list class="home-page__main"/>
-    <art-one class="home-page__footer"/>
+  <div class="art-page">
+    <art-header class="art-page__header"/>
+    
+    <art-list 
+      v-if="mode === 'list'"
+      class="art-page__list"
+      @clicked="handleListClicked"
+    />
+    
+    <art-one
+      v-if="mode === 'one'"
+      class="art-page__one"
+      @clicked="handleOneClicked"
+    />
   </div>
 </template>
 
@@ -19,11 +29,26 @@ export default {
     ArtList,
     ArtOne
   },
+
+  data() {
+    return {
+      mode: 'list' // enum with "mode | one" 
+    }
+  },
+
+  methods: {
+    handleListClicked() {
+      this.mode = 'one'
+    },
+    handleOneClicked() {
+      this.mode = 'list'
+    },
+  }
 }
 </script>
 
 <style lang="scss">
-.home-page {
+.art-page {
   box-sizing: border-box;
   width: 100%;
   height: 100%;
@@ -32,16 +57,16 @@ export default {
   justify-content: flex-start;
   align-items: center;
 }
-.home-page__header {
+.art-page__header {
   height: 3rem;
   width: 100%;
   background-color: var(--c-back-1);
 }
-.home-page__main {
+.art-page__list {
   width: 100%;
   flex: 1;
 }
-.home-page__footer {
+.art-page__one {
   box-sizing: border-box;
   height: 3rem;
   width: 100%;
