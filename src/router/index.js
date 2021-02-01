@@ -25,7 +25,7 @@ const routes = [
   {
     path: '/art',
     name: 'Art',
-    component: ComingSoon
+    component: () => import(/* webpackChunkName: "artpage" */ '../views/ArtPage.vue')
   },
   {
     path: '/games',
