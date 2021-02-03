@@ -1,6 +1,6 @@
 <template>
 	<div 
-		class="move-field"
+		class="art-page-one"
 		@click="handleClicked"
 	>
 		ART ONE

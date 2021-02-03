@@ -1,16 +1,16 @@
 <template>
-  <div class="art-page">
+  <div class="art-page-content">
     <art-header class="art-page__header"/>
     
     <art-list 
       v-if="mode === 'list'"
-      class="art-page__list"
+      class="art-page-content__list"
       @clicked="handleListClicked"
     />
     
     <art-one
       v-if="mode === 'one'"
-      class="art-page__one"
+      class="art-page-content__one"
       @clicked="handleOneClicked"
     />
   </div>
@@ -48,7 +48,7 @@ export default {
 </script>
 
 <style lang="scss">
-.art-page {
+.art-page-content {
   box-sizing: border-box;
   width: 100%;
   height: 100%;
@@ -57,16 +57,16 @@ export default {
   justify-content: flex-start;
   align-items: center;
 }
-.art-page__header {
+.art-page-content__header {
   height: 3rem;
   width: 100%;
   background-color: var(--c-back-1);
 }
-.art-page__list {
+.art-page-content__list {
   width: 100%;
   flex: 1;
 }
-.art-page__one {
+.art-page-content__one {
   box-sizing: border-box;
   height: 3rem;
   width: 100%;

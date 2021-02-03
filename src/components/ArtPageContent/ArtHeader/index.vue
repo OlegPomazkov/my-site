@@ -1,15 +1,17 @@
 <template>
-	<div class="home-header">
-		<div class="home-header__wrapper">
-			<div class="home-header__wrapper__pages">
-				HOME
-			</div>
+	<div class="art-page-header-wrapper">
+		<div class="art-page-header">
+			<custom-button
+				class="art-page-header__control"
+				:icon="'home'"
+				@clicked="handleNavAction('home')"
+			/>
 
-			<div class="home-header__wrapper__pages">
+			<div class="art-page-header__title">
 				TITLE
 			</div>
 
-			<div class="home-header__wrapper__pages">
+			<div class="art-page-header__control">
 				LOCALE
 			</div>
 		</div>
@@ -17,17 +19,34 @@
 </template>
 
 <script>
+import CustomButton from '@/components/Commons/CustomButton'
+
 export default {
+	components: {
+		CustomButton
+	},
+
+	methods: {
+		handleNavAction(type) {
+			switch(type) {
+				case 'home': 
+					this.$router.push({name: 'Home'})
+					break
+				default: 
+					console.error(`Unknown nav action: ${type}!`)
+			}
+		}
+	}
 }
 </script>
 
 <style lang="scss">
-.home-header {
+.art-page-header-wrapper {
 	box-sizing: border-box;
 	width: 100%;
 	height: 4rem;
 }
-.home-header__wrapper {
+.art-page-header {
 	box-sizing: border-box;
 	width: 100%;
 	height: 100%;
@@ -41,7 +60,7 @@ export default {
 	justify-content: space-between;
 	align-items: center;
 }
-.home-header__wrapper__pages {
+.art-page-header__pages {
 	box-sizing: border-box;
 	flex: 1;
 	max-width: 40rem;
@@ -50,7 +69,7 @@ export default {
 	justify-content: space-between;
 	align-items: center;	
 }
-.home-header__wrapper__control {	
+.art-page-header__control {	
     height: 100%;
     display: flex;
     align-items: center;

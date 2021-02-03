@@ -1,6 +1,6 @@
 <template>
 	<div 
-		class="move-field"
+		class="art-page-list"
 		@click="handleClicked"
 	>
 		ART LIST

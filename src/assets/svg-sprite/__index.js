@@ -6,4 +6,5 @@ require('./cross.svg');
 require('./dots.svg');
 require('./plus.svg');
 require('./settings.svg');
+require('./home.svg');
 
